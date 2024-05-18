@@ -1,0 +1,37 @@
+help 
+print_descending 
+show 
+head 
+add 
+f
+1.0
+2.0
+3
+ОЧНАЯ
+3
+01.01.0001
+01.01.0001
+БЕЛЫЙ
+США
+апролд
+1.0
+2
+3.0
+show 
+execute_script history_1
+execute_script history1
+f
+1.0
+2.0
+3
+ОЧНАЯ
+3
+01.01.0001
+01.01.0001
+БЕЛЫЙ
+США
+апролд
+1.0
+2
+3.0
+history 

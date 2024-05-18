@@ -1,5 +1,5 @@
 CREATE TYPE weapon_type AS ENUM ('огнестрельное оружие', 'лук и стрелы', 'метательное оружие', 'ручное оружие',
-    'кинжалы и ножи', 'дробящее оружие', 'копья', 'топоры и тесаки', 'другое');
+    'кинжалы и ножи', 'дробящее оружие', 'копья', 'топоры и тесаки', 'магическое оружие', 'другое');
 
 CREATE TYPE feeling AS ENUM ('голод', 'страх');
 CREATE TYPE animal_species AS ENUM ('бородавочник', 'газель', 'антилопа', 'зебра');
@@ -8,7 +8,17 @@ CREATE TABLE hunter (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     surname TEXT NOT NULL,
+    health integer CHECK (health >= 0 and health <= 3) DEFAULT 3 NOT NULL,
     experience INTEGER DEFAULT 0
+);
+
+CREATE TABLE features (
+    hunter_id integer REFERENCES hunter ,
+    strength integer CHECK (strength >= 0 AND strength <= 100) NOT NULL ,
+    agility integer CHECK (agility >= 0 AND agility <= 100) NOT NULL ,
+    accuracy integer CHECK (accuracy >= 0 AND accuracy <= 100) NOT NULL ,
+    endurance integer CHECK (endurance >= 0 AND endurance <= 100) NOT NULL ,
+    intelligence integer CHECK (intelligence >= 0 AND intelligence <= 100) NOT NULL
 );
 
 CREATE TABLE location (
@@ -20,21 +30,24 @@ CREATE TABLE location (
 CREATE TABLE animal (
     id SERIAL PRIMARY KEY,
     species ANIMAL_SPECIES NOT NULL,
-    location INTEGER REFERENCES location ON DELETE SET NULL ON UPDATE CASCADE
+    location INTEGER REFERENCES location ON DELETE SET NULL ON UPDATE CASCADE,
+    health integer CHECK (health >= 0 and health <= 3) DEFAULT 3 NOT NULL,
 );
 
 CREATE TABLE weapon (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     weapon_type WEAPON_TYPE NOT NULL,
-    protection INTEGER NOT NULL CONSTRAINT check_weapon_protection CHECK (protection >= 0 AND protection <= 10),
-    damage INTEGER NOT NULL CONSTRAINT check_weapon_damage CHECK (damage >= 0 AND damage <= 10)
+    max_protection INTEGER NOT NULL CONSTRAINT check_weapon_protection CHECK (protection >= 0 AND protection <= 10),
+    max_damage INTEGER NOT NULL CONSTRAINT check_weapon_damage CHECK (damage >= 0 AND damage <= 10)
 );
 
 CREATE TABLE skill (
     hunter_id INTEGER REFERENCES hunter ON DELETE CASCADE ON UPDATE CASCADE,
     weapon_id INTEGER REFERENCES weapon ON DELETE CASCADE ON UPDATE CASCADE,
     level INTEGER NOT NULL CONSTRAINT check_skill_level CHECK (level >= 0 AND level <= 10),
+    damage integer NOT NULL CHECK (damage >= 0 AND damage <= 10);
+    protection integer NOT NULL CHECK (protection >= 0 AND protection <= 10);
     PRIMARY KEY (hunter_id, weapon_id)
 );
 
