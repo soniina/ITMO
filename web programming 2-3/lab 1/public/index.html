@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>meow</title>
+</head>
+<body>
+    <header>
+        <p>Павличенко Софья Алексеевна P3215<br><b>Вариант №409295</b></p>
+    </header>
+
+    <main>
+        <div class="cat-container">
+            <div class="cat-table-wrapper">
+                <table class="cat-table"></table>
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="form-container">
+                <form method="get">
+                    <div class="input-form">
+                        <fieldset>
+                            <legend>Выберете X:</legend>
+                            <label for="x1">
+                                <input type="radio" name="X" id="x1" value="-3"> -3
+                            </label>
+                            <label for="x2">
+                                <input type="radio" name="X" id="x2" value="-2"> -2
+                            </label>
+                            <label for="x3">
+                                <input type="radio" name="X" id="x3" value="-1"> -1
+                            </label>
+                            <label for="x4">
+                                <input type="radio" name="X" id="x4" value="0"> 0
+                            </label>
+                            <label for="x5">
+                                <input type="radio" name="X" id="x5" value="1"> 1
+                            </label>
+                            <label for="x6">
+                                <input type="radio" name="X" id="x6" value="2"> 2
+                            </label>
+                            <label for="x7">
+                                <input type="radio" name="X" id="x7" value="3"> 3
+                            </label>
+                            <label for="x8">
+                                <input type="radio" name="X" id="x8" value="4"> 4
+                            </label>
+                            <label for="x9">
+                                <input type="radio" name="X" id="x9" value="5"> 5
+                            </label>
+                        </fieldset>
+                    </div>
+
+                    <div class="input-form">
+                        <label for="Y">Введите Y:</label>
+                        <input type="text" name="Y" id="Y" placeholder="(от -5 до 3)">
+                    </div>
+
+                    <div class="input-form">
+                        <label for="R">Выберете R:</label>
+                        <select name="R" id="R">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <button type="button" id="checkButton">Проверить</button>
+                </form>
+
+                <div id="notification"></div>
+            </div>
+
+
+            <div class="area-container">
+                <div class="graph">
+                    <svg height="400" width="400" xmlns="http://www.w3.org/2000/svg">
+
+                        <!--Прямоугольник (нижняя правая область)-->
+                        <rect x="200" y="200" width="75" height="150" fill="#3399fe" />
+                        <!-- Треугольник (нижняя левая область) -->
+                        <polygon points="200,200 200,350 125,200" fill="#3399fe" />
+                        <!-- Четверть круга (верхняя левая область) -->
+                        <path d="M 125 200 A 75 75 0 0 1 200 125 L 200 200 Z" fill="#3399fe" />
+
+                        <line stroke="black" x1="0" x2="400" y1="200" y2="200"></line>
+                        <line stroke="black" x1="200" x2="200" y1="0" y2="400"></line>
+                        <polygon fill="black" points="200,0 194,20 206,20"></polygon>
+                        <polygon fill="black" points="400,200 380,206 380,194"></polygon>
+
+                        <!-- Засечки -->
+                        <line stroke="black" x1="275" x2="275" y1="205" y2="195"></line> <!-- R/2 на оси X -->
+                        <line stroke="black" x1="350" x2="350" y1="205" y2="195"></line> <!-- R на оси X -->
+                        <line stroke="black" x1="125" x2="125" y1="205" y2="195"></line> <!-- -R/2 на оси X -->
+                        <line stroke="black" x1="50" x2="50" y1="205" y2="195"></line> <!-- -R на оси X -->
+
+                        <line stroke="black" x1="195" x2="205" y1="125" y2="125"></line> <!-- R/2 на оси Y -->
+                        <line stroke="black" x1="195" x2="205" y1="350" y2="350"></line> <!-- -R на оси Y -->
+                        <line stroke="black" x1="195" x2="205" y1="275" y2="275"></line> <!-- -R/2 на оси Y -->
+                        <line stroke="black" x1="195" x2="205" y1="50" y2="50"></line> <!-- R на оси Y -->
+
+                        <!-- Подписи для засечек -->
+                        <text x="266" y="190" font-size="12">R/2</text>
+                        <text x="345" y="190" font-size="12">R</text>
+                        <text x="116" y="190" font-size="12">-R/2</text>
+                        <text x="45" y="190" font-size="12">-R</text>
+                        <text x="210" y="128" font-size="12">R/2</text>
+                        <text x="210" y="53" font-size="12">R</text>
+                        <text x="210" y="278" font-size="12">-R/2</text>
+                        <text x="210" y="353" font-size="12">-R</text>
+
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <table id="table" >
+                <thead>
+                <tr>
+                    <th>X</th>
+                    <th>Y</th>
+                    <th>R</th>
+                    <th>Попадание</th>
+                    <th>Текущее время</th>
+                    <th>Время работы скрипта, мс</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>мяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяумяу</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/superagent"></script>
+    <script  type="text/javascript"  src="js/script.js"></script>
+</body>
+</html>
