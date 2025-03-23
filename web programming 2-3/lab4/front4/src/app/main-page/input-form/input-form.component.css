@@ -1,0 +1,70 @@
+.input-form {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+fieldset {
+  border: 2px solid navy;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+input[type="radio"] {
+  transform: scale(1.2);
+}
+
+fieldset label {
+  margin-left: 3px;
+}
+
+input[type="text"], input[type="password"], p-select {
+  padding: 8px;
+  margin: 5px;
+  border: 2px solid navy;
+  border-radius: 4px;
+  font-size: 17px;
+}
+
+p-select {
+  padding: 0;
+}
+
+input[type="radio"]:hover,
+input[type="text"]:hover,
+input[type="password"]:hover,
+fieldset:hover,
+p-button:hover,
+p-button:focus,
+p-select:hover,
+header:focus,
+input[type="radio"]:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+fieldset:focus,
+p-select:focus {
+  border-color: navy;
+  outline: none;
+  box-shadow: 0 0 10px navy;
+  transition: box-shadow 0.3s ease;
+}
+
+p-button {
+  background-color: #120b78;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 40px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+button:active {
+  background-color: white !important;
+  color:navy !important;
+  transform: scale(0.98);
+}
+

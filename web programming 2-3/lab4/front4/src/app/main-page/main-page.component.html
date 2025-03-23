@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="form-container">
+    <app-input-form (rChanged)="onRChanged($event)" (notificationChanged)="onNotificationChange($event)"/>
+    <div id="notification" *ngIf="notification">
+      {{ notification }}
+    </div>
+  </div>
+  <div class="area-container">
+    <app-graph [R]="R" (notificationChanged)="onNotificationChange($event)"/>
+  </div>
+</div>
+<div class="container">
+  <div class="table-container">
+    <app-results-table/>
+  </div>
+</div>
+

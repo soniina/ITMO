@@ -1,0 +1,44 @@
+.cat-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.cat-table-wrapper {
+  height: 100%;
+  overflow: visible;
+}
+
+.cat-table {
+  width: 100%;
+  height: auto;
+  table-layout: fixed;
+}
+
+.cat-table td {
+  width: 16.66%;
+  padding: 0;
+  margin: 0;
+  border: transparent;
+}
+
+td {
+  width: 16.66%;
+  padding: 0;
+  margin: 0;
+  border: transparent;
+}
+
+.cat {
+  position: absolute;
+  height: auto;
+  transform: translate(-50%, -25%);
+  transition: opacity 0.3s ease;
+  opacity: 1;
+  z-index: 1;
+}

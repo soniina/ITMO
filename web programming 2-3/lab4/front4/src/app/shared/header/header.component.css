@@ -1,0 +1,35 @@
+header {
+  position: fixed;
+  font-size: 21px;
+  color: white;
+  text-align: center;
+  background-color: navy;
+  padding: 20px;
+  width: 100%;
+  z-index: 1000;
+}
+
+header:hover,header:focus {
+  border-color: navy;
+  box-shadow: 0 0 10px navy;
+  transition: box-shadow 0.3s ease;
+}
+
+button {
+  position: absolute;
+  left: 30px;
+  top: 40px;
+  background-color: #ff4d4d;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+button:hover {
+  border-color: red;
+  box-shadow: 0 0 20px red;
+  transition: box-shadow 0.3s ease;
+}

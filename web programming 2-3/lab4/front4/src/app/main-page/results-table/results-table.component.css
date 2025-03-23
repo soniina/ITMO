@@ -1,0 +1,18 @@
+.container table {
+  width: 100%;
+}
+
+table, td {
+  border-collapse: collapse;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  text-align: center !important;
+  color: white;
+  background-color: gray;
+  padding: 10px;
+}

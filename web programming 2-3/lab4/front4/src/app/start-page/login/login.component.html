@@ -1,0 +1,29 @@
+<div class="login-container">
+  <form class="login-form">
+    <h2 class="form-title">Вход в систему</h2>
+
+    <div class="form-group">
+      <label for="username">Имя пользователя:</label>
+      <input class="form-input" id="username" type="text" [(ngModel)]="username" name="username" required #usernameModel="ngModel"/>
+      <div *ngIf="usernameModel.invalid && (usernameModel.dirty || usernameModel.touched)" class="error-message">
+        Имя пользователя не может быть пустым
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Пароль:</label>
+      <input class="form-input" id="password" type="password" [(ngModel)]="password" name="password" required #passwordModel="ngModel"/>
+      <div *ngIf="passwordModel.invalid && (passwordModel.dirty || passwordModel.touched)" class="error-message">
+        Пароль не может быть пустым
+      </div>
+    </div>
+
+    <div class="error-message" *ngIf="error">
+      {{ error }}
+    </div>
+
+    <button [disabled]="usernameModel.invalid || passwordModel.invalid" class="submit-button" (click)="login()">Войти</button>
+    <button [disabled]="usernameModel.invalid || passwordModel.invalid" class="submit-button" (click)="register()">Зарегистрироваться</button>
+  </form>
+</div>
+
+

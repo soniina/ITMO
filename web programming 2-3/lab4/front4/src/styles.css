@@ -1,0 +1,58 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: scroll;
+}
+
+body {
+  background-color: #120b78;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  padding-top: 130px;
+  height: 100%;
+}
+
+.container table {
+  width: 100%;
+}
+
+table, td {
+  border-collapse: collapse !important;
+  border: 1px solid black !important;
+  border-radius: 4px !important;
+  padding: 15px !important;
+  text-align: center !important;
+}
+
+th {
+  color: white !important;
+  background-color: gray !important;
+  padding: 15px !important;
+}
+
+:root {
+  color-scheme: light !important;
+  --p-button-primary-background: navy !important;
+  --p-button-primary-color: white !important;
+  --p-button-hover-color: white !important;
+  --p-primary-color: navy !important;
+  --p-primary-hover-color: navy !important;
+  --p-content-background: white !important;
+  --p-content-color: black !important;
+  --p-form-field-color: black !important;
+  --p-form-field-background: white !important;
+  --p-primary-contrast-color: white !important;
+}
+
+app-root {
+  display: flex !important;
+  flex-direction: column;
+  min-height: 100%;
+  flex: none;
+}
+
