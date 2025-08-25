@@ -1,0 +1,9 @@
+# ninja log v6
+1	122	1731592812408335833	CMakeFiles/bmp_header_viewer_master.dir/main.c.o	cfd65a9e27b8f187
+1	122	1731592812408454542	CMakeFiles/bmp_header_viewer_master.dir/util.c.o	6fad0752e60fbf43
+122	205	1731592812530239699	bmp_header_viewer_master	915fc4c3054e579d
+0	122	1731592812408126955	CMakeFiles/bmp_header_viewer_master.dir/bmp.c.o	c3aee637734ce9fe
+1	210	1731942978274001942	CMakeFiles/bmp_header_viewer_master.dir/main.c.o	e14dca98a6cb301b
+1	211	1731942978273763985	CMakeFiles/bmp_header_viewer_master.dir/bmp.c.o	5e58f03d5aee5c3b
+1	211	1731942978274141442	CMakeFiles/bmp_header_viewer_master.dir/util.c.o	7be4246825b83da9
+211	306	1731942978483381502	bmp_header_viewer_master	2d2a258fc922baab

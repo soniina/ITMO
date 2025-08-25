@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <title>meow</title>
+    <h:outputStylesheet name="css/style.css" />
+</h:head>
+
+<h:body>
+    <ui:include src="includes/header.xhtml"/>
+
+    <div class="main">
+        <ui:include src="includes/cats.xhtml"/>
+            <div class="clock-container">
+                <h:outputText id="clock" />
+            </div>
+
+        <div class="container">
+                <h:link class="back-button" value="На основную страницу ->" outcome="main"/>
+        </div>
+
+    </div>
+
+    <ui:include src="includes/footer.xhtml"/>
+    <h:outputScript name="js/index.js"/>
+    <h:outputScript name="js/cats.js"/>
+</h:body>
+
+</html>

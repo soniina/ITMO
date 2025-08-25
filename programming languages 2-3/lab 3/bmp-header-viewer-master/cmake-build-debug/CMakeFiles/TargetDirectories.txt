@@ -1,0 +1,3 @@
+/Users/sonikpav/CLionProjects/bmp-header-viewer-master/cmake-build-debug/CMakeFiles/bmp_header_viewer_master.dir
+/Users/sonikpav/CLionProjects/bmp-header-viewer-master/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/sonikpav/CLionProjects/bmp-header-viewer-master/cmake-build-debug/CMakeFiles/rebuild_cache.dir

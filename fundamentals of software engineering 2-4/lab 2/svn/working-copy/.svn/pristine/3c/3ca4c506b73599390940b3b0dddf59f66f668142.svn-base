@@ -1,0 +1,30 @@
+public class F implements C, B {
+
+    private int h = 42;
+
+    private byte j = 1;
+
+    public Object pp() {
+        return this;
+    }
+
+    public void bb() {
+        System.out.println(42);
+    }
+
+    public int[] ii() {
+        return new int[]{0, 1, 2, 3, 4};
+    }
+
+    public double ad() {
+        return 12.12;
+    }
+
+    public java.util.Set<Integer> ll() {
+        return new java.util.LinkedList<Integer>;
+    }
+
+    public int ae() {
+        return 9;
+    }
+}

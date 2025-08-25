@@ -1,0 +1,6 @@
+public class C extends null {
+
+    int[] ii();
+
+    double ad();
+}

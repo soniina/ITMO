@@ -1,0 +1,20 @@
+<div class="cat-container">
+  <div class="cat-table-wrapper">
+    <table class="cat-table">
+      <tbody>
+      <tr *ngFor="let row of rows">
+        <td *ngFor="let cat of row" [style.height.px]="cellHeight">
+          <img
+            [src]="cat.src"
+            [style.width.px]="cat.width"
+            (mouseover)="onMouseOver(cat)"
+            (mouseout)="onMouseOut(cat)"
+            class="cat"
+          />
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

@@ -1,0 +1,58 @@
+public class E extends null implements C, B {
+
+    private byte a = 1;
+
+    private long k = 4321;
+
+    public java.util.Random mm() {
+        return new java.util.Random();
+    }
+
+    public long dd() {
+        return 100500;
+    }
+
+    public int[] ii() {
+        return new int[]{4, 3, 2, 1};
+    }
+
+    public double ad() {
+        return 11;
+    }
+
+    public java.util.Set<Integer> ll() {
+        return new java.util.LinkedList<Integer>;
+    }
+
+    public int ae() {
+        return java.lang.Math.abs(-7);
+    }
+
+    public void ab() {
+        System.out.println();
+    }
+
+    public long ac() {
+        return 222;
+    }
+
+    public java.util.List<String> jj() {
+        return new java.util.ArrayList<String>();
+    }
+
+    public String nn() {
+        return "++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++";
+    }
+
+    public java.lang.Class qq() {
+        return getClass();
+    }
+
+    public float ff() {
+        return 0;
+    }
+
+    public int hh() {
+        return new java.util.Random().nextInt();
+    }
+}

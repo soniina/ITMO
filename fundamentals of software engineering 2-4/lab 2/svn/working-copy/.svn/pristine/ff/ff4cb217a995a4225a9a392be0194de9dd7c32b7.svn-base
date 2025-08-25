@@ -1,0 +1,6 @@
+public interface B {
+
+    java.util.Set<Integer> ll();
+
+    int ae();
+}

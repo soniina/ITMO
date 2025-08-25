@@ -1,0 +1,97 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.9.23'
+    id 'war'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compileOnly 'jakarta.platform:jakarta.jakartaee-api:9.1.0'
+    compileOnly 'org.primefaces:primefaces:12.0.0'
+
+    implementation 'org.eclipse.persistence:org.eclipse.persistence.jpa:3.0.2'
+    implementation 'org.postgresql:postgresql:42.7.2'
+
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+}
+
+war {
+    archiveFileName = warFileName
+
+    manifest {
+        attributes(
+                'Implementation-Title': project.name,
+                'Implementation-Version': project.version,
+        )
+    }
+}
+
+tasks.register('compile') {
+    group = 'build'
+    description = 'Compiles the source code'
+    dependsOn compileKotlin
+}
+
+tasks.register('myBuild') {
+    group = 'build'
+    description = 'Compiles the source code'
+    dependsOn compile, war, classes
+}
+
+clean {
+    group = 'build'
+    description = 'Deletes compiled classes and temporary files'
+}
+
+test {
+    group = 'verification'
+    description = 'Runs JUnit tests'
+    dependsOn myBuild
+    useJUnitPlatform()
+}
+
+tasks.register('scp', Exec) {
+    group = 'deployment'
+    description = 'Deploys WAR via SCP'
+    dependsOn myBuild
+
+    def warFile = layout.buildDirectory.file("libs/${warFileName}")
+
+    environment = ['SSHPASS': password]
+    commandLine = [
+            'sshpass', '-e',
+            'scp', '-P', port,
+            warFile.get().asFile.absolutePath,
+            "${user}@${host}:${destinationDir}"
+    ]
+}
+
+tasks.register('env', Exec) {
+    group = 'environment'
+    description = 'Running in an alternative environment'
+    dependsOn myBuild, scp
+
+    commandLine = [
+            'sshpass', '-e',
+            'ssh', '-p', port,
+            "${user}@${host}",
+            'bash', '-l', '-c',
+            "'sh ${wildflyDir}/bin/standalone.sh'"
+    ]
+
+    environment = [
+            'SSHPASS': password,
+            'JAVA_HOME': pathToJava,
+            'ALT_JVM_ARGS': altJvmArgs
+    ]
+}
+
+kotlin {
+    jvmToolchain(17)
+}

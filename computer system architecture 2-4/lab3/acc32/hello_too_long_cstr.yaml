@@ -1,0 +1,21 @@
+name: hello
+limit: 4000
+memory_size: 0x1000
+input_streams:
+  0x80: [65, 108, 105, 99, 101, 101, 101, 101, 101, 101, 101, 101, 10]
+  0x84: []
+reports:
+  - name: Step-by-step
+    slice: all
+    view: |
+      {pc}:	{instruction}     {pc:label}   {Acc:dec} {memory:51:53}
+  - name: Result
+    slice: last
+    view: |
+      numio[0x80]: {io:0x80:sym}
+      numio[0x84]: {io:0x84:sym}
+      {memory:0:31}
+    assert: |
+      numio[0x80]: "\n" >>> ""
+      numio[0x84]: "" >>> "What is your name?\n-1"
+      mem[0..31]: 	5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f

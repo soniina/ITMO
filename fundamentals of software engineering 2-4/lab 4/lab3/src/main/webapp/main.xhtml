@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>meow</title>
+    <h:outputStylesheet name="css/style.css"/>
+</h:head>
+
+<body>
+<ui:include src="includes/header.xhtml"/>
+
+<div class="main">
+    <ui:include src="includes/cats.xhtml"/>
+    <h:inputHidden id="lastPoint" value="#{pointBean.lastPointJson}" />
+    <div class="container">
+        <div class="form-container">
+            <h:form>
+                <div class="input-form">
+                    <fieldset>
+                        <legend>Выберете X:</legend>
+                        <h:selectOneRadio value="#{pointBean.x}">
+                            <f:selectItem itemValue="-3" itemLabel="-3"/>
+                            <f:selectItem itemValue="-2" itemLabel="-2"/>
+                            <f:selectItem itemValue="-1" itemLabel="-1"/>
+                            <f:selectItem itemValue="0" itemLabel="0"/>
+                            <f:selectItem itemValue="1" itemLabel="1"/>
+                            <f:selectItem itemValue="2" itemLabel="2"/>
+                            <f:selectItem itemValue="3" itemLabel="3"/>
+                            <f:selectItem itemValue="4" itemLabel="4"/>
+                            <f:selectItem itemValue="5" itemLabel="5"/>
+                        </h:selectOneRadio>
+                    </fieldset>
+                </div>
+
+                <div class="input-form">
+                    <h:outputLabel for="Y" value="Введите Y:"/>
+                    <h:inputText id="Y" value="#{pointBean.y}" placeholder="(от -5 до 3)" />
+                </div>
+
+                <div class="input-form">
+                    <h:outputLabel for="R" value="Выберете R:"/>
+                    <h:selectOneMenu id="R" value="#{pointBean.r}" onchange="redrawGraph()">
+                        <f:selectItem itemValue="1" itemLabel="1"/>
+                        <f:selectItem itemValue="2" itemLabel="2"/>
+                        <f:selectItem itemValue="3" itemLabel="3"/>
+                        <f:selectItem itemValue="4" itemLabel="4"/>
+                        <f:selectItem itemValue="5" itemLabel="5"/>
+                    </h:selectOneMenu>
+                </div>
+
+                <h:commandButton styleClass="check-button" id="checkButton" value="Проверить" onclick="buttonClick(event)">
+                    <f:ajax execute="@form" listener="#{pointBean.check}" render="@form results-table lastPoint graph svg"
+                        onevent="updateGraph"/>
+                </h:commandButton>
+            </h:form>
+
+            <h:messages id="notification" showDetail="true" showSummary="false"/>
+
+        </div>
+
+        <div class="area-container">
+            <div id="graph" onclick="graphClick()">
+                <ui:include src="/resources/svg/graph.svg"/>
+            </div>
+        </div>
+    </div>
+
+
+    <h:form id="graphForm">
+        <h:inputHidden id="hiddenX" value="#{pointBean.x}" />
+        <h:inputHidden id="hiddenY" value="#{pointBean.y}" />
+        <h:inputHidden id="hiddenR" value="#{pointBean.r}" />
+        <h:commandButton id="hiddenSubmitButton" style="display:none;">
+            <f:ajax execute="@form" listener="#{pointBean.check}" render="results-table lastPoint graph svg"
+                    onevent="updateGraph"/>
+        </h:commandButton>
+    </h:form>
+
+
+    <div class="container">
+        <h:dataTable class="data-table" id="results-table" value="#{pointBean.results}" var="point">
+            <h:column>
+                <f:facet name="header">X</f:facet>
+                #{point.x}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Y</f:facet>
+                #{point.y}
+            </h:column>
+            <h:column>
+                <f:facet name="header">R</f:facet>
+                #{point.r}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Попадание</f:facet>
+                #{point.inArea}
+            </h:column>
+        </h:dataTable>
+    </div>
+</div>
+
+<ui:include src="includes/footer.xhtml"/>
+
+<h:outputScript name="js/cats.js"/>
+<h:outputScript name="js/main.js"/>
+<ui:repeat value="#{pointBean.results}" var="point">
+    <script type="text/javascript">
+        drawDot("#{point.x}", "#{point.y}");
+    </script>
+</ui:repeat>
+</body>
+</html>
